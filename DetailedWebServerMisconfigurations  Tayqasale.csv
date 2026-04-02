@@ -1,0 +1,496 @@
+Web Server Misconfiguration,File Path,Category
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CampaignManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DynamicToolManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DynamicToolManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CampaignManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CrmWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CrmWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ChecklistWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ChecklistWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ChecklistWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Denial of service attacks
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Permission Management
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Dangerous methods enabled
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Brute force attacks
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Session hijacking
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Permission Management
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\InventoryManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\InventoryManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\LoyaltyManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\LoyaltyManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\PenetrationWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\PenetrationWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ProxyWebServiceWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ProxyWebServiceWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\RequestProcessorWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\RequestProcessorWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ReportManagerWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ReportManagerWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\UserIdentityManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\UserIdentityManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\WorkPlanManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\WorkPlanManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\MessagingWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\MessagingWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\LicenseService,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure HSTS Header is set,C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\LicenseService,Denial of service attacks
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\LicenseService,Permission Management
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\LicenseService,Dangerous methods enabled
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\LicenseService,Brute force attacks
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\LicenseService,Session hijacking
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\LicenseService,Permission Management
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\LicenseService,Denial of service attacks
+IIS server is using default cipher suites,%SystemDrive%\inetpub\wwwroot,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure NULL Cipher Suites are disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure TLS 1.0 is disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Dangerous methods enabled
+Ensure Default IIS web log location is moved,IIS Server,Logging
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ServicePortal\Core,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\ServicePortal\Core,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\ServicePortal\Core,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\ServicePortal\Core,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\ServicePortal\Core,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\ServicePortal\Core,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ServicePortal\Core,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ServicePortal\WebUI,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\ServicePortal\WebUI,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\ServicePortal\WebUI,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\ServicePortal\WebUI,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\ServicePortal\WebUI,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\ServicePortal\WebUI,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ServicePortal\WebUI,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CustomerDataExchangeWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CustomerDataExchangeWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\TayqaNovaWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\TayqaNovaWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaNovaWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaNovaWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\TayqaNovaWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\TayqaNovaWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CustomerDataExchangeWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CustomerDataExchangeWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CustomerDataExchangeWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CustomerDataExchangeWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CustomerDataExchangeWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\TayqaNovaWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,%SystemDrive%\inetpub\wwwroot,Denial of service attacks
+Ensure deployment method retail is set,IIS Server,Information Disclosure
+Ensure unique application pools is set for sites,IIS Server,Permission Management
+Ensure application pool identity is configured for all application pools,IIS Server,Permission Management
+Ensure host headers are on all sites,%SystemDrive%\inetpub\wwwroot,Denial of service attacks
+Ensure web content is on non-system partition,%SystemDrive%\inetpub\wwwroot,Sensitive File Access
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DeliveryManagementWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DeliveryManagementWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CrmWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ServicePortal\WebUI,Denial of service attacks
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\ServicePortal\WebUI,Permission Management
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\ServicePortal\WebUI,Dangerous methods enabled
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\ServicePortal\WebUI,Brute force attacks
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\ServicePortal\WebUI,Session hijacking
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\ServicePortal\WebUI,Permission Management
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ServicePortal\WebUI,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\UserIdentityManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\UserIdentityManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\UserIdentityManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\WorkPlanManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\WorkPlanManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\WorkPlanManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\Core,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DynamicToolManagementPortal\WebUI,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CampaignManagementPortal\Core,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ServicePortal\WebUI,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Dangerous methods enabled
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure web content is on non-system partition,%SystemDrive%\inetpub\wwwroot,Sensitive File Access
+Ensure host headers are on all sites,%SystemDrive%\inetpub\wwwroot,Denial of service attacks
+Ensure application pool identity is configured for all application pools,IIS Server,Permission Management
+Ensure unique application pools is set for sites,IIS Server,Permission Management
+Ensure deployment method retail is set,IIS Server,Information Disclosure
+Ensure Dynamic IP Address Restrictions is enabled,%SystemDrive%\inetpub\wwwroot,Denial of service attacks
+Ensure Default IIS web log location is moved,IIS Server,Logging
+Ensure TLS 1.0 is disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure NULL Cipher Suites are disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),%SystemDrive%\inetpub\wwwroot,SSL
+IIS server is using default cipher suites,%SystemDrive%\inetpub\wwwroot,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\LicenseService,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\LicenseService,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\LicenseService,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\LicenseService,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\LicenseService,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\LicenseService,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\LicenseService,Denial of service attacks
+Ensure HSTS Header is set,C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\LicenseService,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\LicenseService,SSL
+Ensure host headers are on all sites,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Denial of service attacks
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Permission Management
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Session hijacking
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Brute force attacks
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Dangerous methods enabled
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Permission Management
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+IIS server is using default cipher suites,C:\TayqaSale\VersionManagement\TayqaSaleInstaller,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CampaignManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CampaignManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CampaignManagementWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ChecklistWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ChecklistWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ServicePortal\Core,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ServicePortal\Core,Denial of service attacks
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\ServicePortal\Core,Permission Management
+Ensure HTTP Trace Method is disabled,C:\TayqaSale\WebServices\ServicePortal\Core,Dangerous methods enabled
+Ensure non-ASCII characters in URLs are not allowed,C:\TayqaSale\WebServices\ServicePortal\Core,Brute force attacks
+Ensure httpcookie mode is configured for session state,C:\TayqaSale\WebServices\ServicePortal\Core,Session hijacking
+Ensure global authorization rule is set to restrict access,C:\TayqaSale\WebServices\ServicePortal\Core,Permission Management
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ServicePortal\Core,Denial of service attacks
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ChecklistWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\RequestProcessorWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\RequestProcessorWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\RequestProcessorWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ReportManagerWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ReportManagerWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ReportManagerWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\ProxyWebServiceWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\ProxyWebServiceWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\ProxyWebServiceWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\PenetrationWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\PenetrationWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\PenetrationWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\PenetrationWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\MessagingWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\MessagingWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\MessagingWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\MessagingWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\LoyaltyManagementWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\LoyaltyManagementWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\LoyaltyManagementWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\InventoryManagementWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\InventoryManagementWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\InventoryManagementWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DynamicToolManagementWS,SSL
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DynamicToolManagementWS,Denial of service attacks
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DynamicToolManagementWS,Denial of service attacks
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\ChecklistWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\CrmWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\CrmWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\CrmWS,SSL
+IIS server is using default cipher suites,C:\TayqaSale\WebServices\CrmWS,SSL
+Ensure host headers are on all sites,C:\TayqaSale\WebServices\DeliveryManagementWS,Denial of service attacks
+Ensure Dynamic IP Address Restrictions is enabled,C:\TayqaSale\WebServices\DeliveryManagementWS,Denial of service attacks
+Ensure TLS 1.0 is disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure NULL Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure DES and 3DES Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure RC4 Cipher Suites are disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Insecure MD5 hashing algorithm is not disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Cipher algorithms which do not provide perfect forward secrecy are not disabled (IIS),C:\TayqaSale\WebServices\DeliveryManagementWS,SSL
+Ensure Unlisted File Extensions are not allowed,C:\TayqaSale\WebServices\TayqaMasterDataSyncService,Permission Management
