@@ -86,6 +86,32 @@ Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders
 ### Təsir
 TLS 1.0 istifadə edən çox köhnə brauzerlər (IE6, IE7) qoşula bilməyəcək. Müasir brauzerlər TLS 1.2/1.3 istifadə edir, problem yaranmayacaq.
 
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== TLS 1.0 YOXLAMA =====" -ForegroundColor Cyan
+$serverPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server"
+$clientPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client"
+$pass = $true
+
+foreach ($side in @(@{Name="Server"; Path=$serverPath}, @{Name="Client"; Path=$clientPath})) {
+    if (Test-Path $side.Path) {
+        $props = Get-ItemProperty -Path $side.Path -ErrorAction SilentlyContinue
+        if ($props.Enabled -eq 0 -and $props.DisabledByDefault -eq 1) {
+            Write-Host "  [PASS] TLS 1.0 $($side.Name): Enabled=0, DisabledByDefault=1" -ForegroundColor Green
+        } else {
+            Write-Host "  [FAIL] TLS 1.0 $($side.Name): Enabled=$($props.Enabled), DisabledByDefault=$($props.DisabledByDefault)" -ForegroundColor Red
+            $pass = $false
+        }
+    } else {
+        Write-Host "  [FAIL] TLS 1.0 $($side.Name): Registry key tapilmadi!" -ForegroundColor Red
+        $pass = $false
+    }
+}
+
+if ($pass) { Write-Host "  Netice: TLS 1.0 ugurla deaktiv edilib." -ForegroundColor Green }
+else { Write-Host "  Netice: TLS 1.0 hele aktiv ola biler! Yeniden yoxlayin." -ForegroundColor Red }
+```
+
 ---
 
 ## 2. DES və 3DES (Triple DES) Cipher Suites Deaktiv Etmə
@@ -142,6 +168,32 @@ Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders
 2. Sol paneldə **"Ciphers"** sekmesine keçin
 3. **DES 56/56** və **Triple DES 168** yanındakı checkbox-ları götürün (uncheck)
 4. **"Apply"** basın → Server restart edin
+
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== DES / 3DES YOXLAMA =====" -ForegroundColor Cyan
+$ciphers = @("DES 56/56", "Triple DES 168")
+$pass = $true
+
+foreach ($cipher in $ciphers) {
+    $regPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\$cipher"
+    if (Test-Path $regPath) {
+        $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue
+        if ($props.Enabled -eq 0) {
+            Write-Host "  [PASS] $cipher: Enabled=0" -ForegroundColor Green
+        } else {
+            Write-Host "  [FAIL] $cipher: Enabled=$($props.Enabled)" -ForegroundColor Red
+            $pass = $false
+        }
+    } else {
+        Write-Host "  [FAIL] $cipher: Registry key tapilmadi!" -ForegroundColor Red
+        $pass = $false
+    }
+}
+
+if ($pass) { Write-Host "  Netice: DES/3DES ugurla deaktiv edilib." -ForegroundColor Green }
+else { Write-Host "  Netice: DES/3DES hele aktiv ola biler! Yeniden yoxlayin." -ForegroundColor Red }
+```
 
 ---
 
@@ -211,6 +263,32 @@ Get-ChildItem -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SC
 3. Bütün **RC4** ilə başlayan cipher-lərin yanındakı checkbox-ları götürün (uncheck)
 4. **"Apply"** basın → Server restart edin
 
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== RC4 YOXLAMA =====" -ForegroundColor Cyan
+$rc4Variants = @("RC4 40/128", "RC4 56/128", "RC4 64/128", "RC4 128/128")
+$pass = $true
+
+foreach ($cipher in $rc4Variants) {
+    $regPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\$cipher"
+    if (Test-Path $regPath) {
+        $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue
+        if ($props.Enabled -eq 0) {
+            Write-Host "  [PASS] $cipher: Enabled=0" -ForegroundColor Green
+        } else {
+            Write-Host "  [FAIL] $cipher: Enabled=$($props.Enabled)" -ForegroundColor Red
+            $pass = $false
+        }
+    } else {
+        Write-Host "  [FAIL] $cipher: Registry key tapilmadi!" -ForegroundColor Red
+        $pass = $false
+    }
+}
+
+if ($pass) { Write-Host "  Netice: Butun RC4 variantlari ugurla deaktiv edilib." -ForegroundColor Green }
+else { Write-Host "  Netice: RC4 hele aktiv ola biler! Yeniden yoxlayin." -ForegroundColor Red }
+```
+
 ---
 
 ## 4. NULL Cipher Suites Deaktiv Etmə
@@ -258,6 +336,29 @@ Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders
 3. **NULL** cipher-in yanındakı checkbox-u götürün (uncheck)
 4. **"Apply"** basın → Server restart edin
 
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== NULL CIPHER YOXLAMA =====" -ForegroundColor Cyan
+$regPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\NULL"
+$pass = $true
+
+if (Test-Path $regPath) {
+    $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue
+    if ($props.Enabled -eq 0) {
+        Write-Host "  [PASS] NULL Cipher: Enabled=0" -ForegroundColor Green
+    } else {
+        Write-Host "  [FAIL] NULL Cipher: Enabled=$($props.Enabled)" -ForegroundColor Red
+        $pass = $false
+    }
+} else {
+    Write-Host "  [FAIL] NULL Cipher: Registry key tapilmadi!" -ForegroundColor Red
+    $pass = $false
+}
+
+if ($pass) { Write-Host "  Netice: NULL cipher ugurla deaktiv edilib." -ForegroundColor Green }
+else { Write-Host "  Netice: NULL cipher hele aktiv ola biler! Yeniden yoxlayin." -ForegroundColor Red }
+```
+
 ---
 
 ## 5. MD5 Hashing Alqoritmi Deaktiv Etmə
@@ -304,6 +405,29 @@ Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders
 2. Sol paneldə **"Hashes"** sekmesine keçin
 3. **MD5** yanındakı checkbox-u götürün (uncheck)
 4. **"Apply"** basın → Server restart edin
+
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== MD5 HASH YOXLAMA =====" -ForegroundColor Cyan
+$regPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\MD5"
+$pass = $true
+
+if (Test-Path $regPath) {
+    $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue
+    if ($props.Enabled -eq 0) {
+        Write-Host "  [PASS] MD5 Hash: Enabled=0" -ForegroundColor Green
+    } else {
+        Write-Host "  [FAIL] MD5 Hash: Enabled=$($props.Enabled)" -ForegroundColor Red
+        $pass = $false
+    }
+} else {
+    Write-Host "  [FAIL] MD5 Hash: Registry key tapilmadi!" -ForegroundColor Red
+    $pass = $false
+}
+
+if ($pass) { Write-Host "  Netice: MD5 hash ugurla deaktiv edilib." -ForegroundColor Green }
+else { Write-Host "  Netice: MD5 hele aktiv ola biler! Yeniden yoxlayin." -ForegroundColor Red }
+```
 
 ---
 
@@ -382,6 +506,40 @@ Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Cryptography\Configura
 ### Təsir
 RSA key exchange əsaslı bağlantılar qəbul edilməyəcək. Müasir brauzerlər ECDHE dəstəkləyir, problem yaranmayacaq.
 
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== PFS (Perfect Forward Secrecy) YOXLAMA =====" -ForegroundColor Cyan
+$regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Cryptography\Configuration\SSL\00010002"
+$pass = $true
+
+if (Test-Path $regPath) {
+    $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue
+    $suites = $props.Functions
+    if ($suites) {
+        $suiteList = $suites -split ","
+        $nonPFS = $suiteList | Where-Object { $_ -notmatch "ECDHE" }
+        if ($nonPFS.Count -eq 0) {
+            Write-Host "  [PASS] Butun cipher suite-ler ECDHE (PFS) esaslidir." -ForegroundColor Green
+            Write-Host "  Aktiv suite-ler ($($suiteList.Count) eded):" -ForegroundColor Gray
+            $suiteList | ForEach-Object { Write-Host "    - $_" -ForegroundColor Gray }
+        } else {
+            Write-Host "  [FAIL] PFS olmayan suite-ler tapildi:" -ForegroundColor Red
+            $nonPFS | ForEach-Object { Write-Host "    - $_" -ForegroundColor Red }
+            $pass = $false
+        }
+    } else {
+        Write-Host "  [FAIL] Functions deyeri bos ve ya tapilmadi!" -ForegroundColor Red
+        $pass = $false
+    }
+} else {
+    Write-Host "  [FAIL] Cipher suite policy registry key tapilmadi!" -ForegroundColor Red
+    $pass = $false
+}
+
+if ($pass) { Write-Host "  Netice: PFS ugurla temin edilib." -ForegroundColor Green }
+else { Write-Host "  Netice: PFS temin olunmayib! Cipher suite siyahisini yeniden yoxlayin." -ForegroundColor Red }
+```
+
 ---
 
 ## 7. IIS Default Cipher Suites Dəyişdirilməsi
@@ -436,6 +594,104 @@ New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders
 5. Server **restart** edin
 
 > **Qeyd:** IIS Crypto GUI aləti yuxarıdakı bütün PowerShell əmrlərini bir kliklə edir.
+
+### Yoxlama Scripti (PowerShell)
+```powershell
+Write-Host "`n===== IIS DEFAULT KONFIQURASIYA — TAM YOXLAMA =====" -ForegroundColor Cyan
+$allPass = $true
+
+# --- Protokollar ---
+$protocols = @(
+    @{ Name="SSL 2.0"; Expected=0 },
+    @{ Name="SSL 3.0"; Expected=0 },
+    @{ Name="TLS 1.0"; Expected=0 },
+    @{ Name="TLS 1.1"; Expected=0 },
+    @{ Name="TLS 1.2"; Expected=1 }
+)
+
+Write-Host "`n  -- Protokollar --" -ForegroundColor Yellow
+foreach ($proto in $protocols) {
+    $serverPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\$($proto.Name)\Server"
+    if (Test-Path $serverPath) {
+        $props = Get-ItemProperty -Path $serverPath -ErrorAction SilentlyContinue
+        if ($props.Enabled -eq $proto.Expected) {
+            Write-Host "  [PASS] $($proto.Name): Enabled=$($props.Enabled)" -ForegroundColor Green
+        } else {
+            Write-Host "  [FAIL] $($proto.Name): Enabled=$($props.Enabled) (gozlenilen: $($proto.Expected))" -ForegroundColor Red
+            $allPass = $false
+        }
+    } else {
+        if ($proto.Expected -eq 0) {
+            Write-Host "  [INFO] $($proto.Name): Key yoxdur (default davranis)" -ForegroundColor Yellow
+        } else {
+            Write-Host "  [FAIL] $($proto.Name): Key tapilmadi!" -ForegroundColor Red
+            $allPass = $false
+        }
+    }
+}
+
+# --- Cipher-ler ---
+$ciphers = @("DES 56/56", "Triple DES 168", "RC4 40/128", "RC4 56/128", "RC4 64/128", "RC4 128/128", "NULL")
+
+Write-Host "`n  -- Cipher-ler --" -ForegroundColor Yellow
+foreach ($cipher in $ciphers) {
+    $regPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\$cipher"
+    if (Test-Path $regPath) {
+        $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue
+        if ($props.Enabled -eq 0) {
+            Write-Host "  [PASS] $cipher: Enabled=0" -ForegroundColor Green
+        } else {
+            Write-Host "  [FAIL] $cipher: Enabled=$($props.Enabled)" -ForegroundColor Red
+            $allPass = $false
+        }
+    } else {
+        Write-Host "  [FAIL] $cipher: Registry key tapilmadi!" -ForegroundColor Red
+        $allPass = $false
+    }
+}
+
+# --- Hash ---
+Write-Host "`n  -- Hash Alqoritmleri --" -ForegroundColor Yellow
+$md5Path = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\MD5"
+if (Test-Path $md5Path) {
+    $props = Get-ItemProperty -Path $md5Path -ErrorAction SilentlyContinue
+    if ($props.Enabled -eq 0) {
+        Write-Host "  [PASS] MD5: Enabled=0" -ForegroundColor Green
+    } else {
+        Write-Host "  [FAIL] MD5: Enabled=$($props.Enabled)" -ForegroundColor Red
+        $allPass = $false
+    }
+} else {
+    Write-Host "  [FAIL] MD5: Registry key tapilmadi!" -ForegroundColor Red
+    $allPass = $false
+}
+
+# --- PFS ---
+Write-Host "`n  -- PFS Cipher Suites --" -ForegroundColor Yellow
+$suitePath = "HKLM:\SOFTWARE\Policies\Microsoft\Cryptography\Configuration\SSL\00010002"
+if (Test-Path $suitePath) {
+    $funcs = (Get-ItemProperty -Path $suitePath).Functions
+    $nonPFS = ($funcs -split ",") | Where-Object { $_ -notmatch "ECDHE" }
+    if ($nonPFS.Count -eq 0) {
+        Write-Host "  [PASS] Butun cipher suite-ler PFS (ECDHE) esaslidir." -ForegroundColor Green
+    } else {
+        Write-Host "  [FAIL] PFS olmayan suite-ler var: $($nonPFS -join ', ')" -ForegroundColor Red
+        $allPass = $false
+    }
+} else {
+    Write-Host "  [FAIL] Cipher suite policy tapilmadi!" -ForegroundColor Red
+    $allPass = $false
+}
+
+# --- Yekun ---
+Write-Host "`n========================================" -ForegroundColor Cyan
+if ($allPass) {
+    Write-Host "  YEKUN: Butun konfiqurasiyalar DOGRU tetbiq edilib!" -ForegroundColor Green
+} else {
+    Write-Host "  YEKUN: Bezi konfiqurasiyalarda problem var. Yuxaridaki [FAIL] satirlarini yoxlayin." -ForegroundColor Red
+}
+Write-Host "========================================`n" -ForegroundColor Cyan
+```
 
 ---
 
