@@ -946,7 +946,9 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
 
 ### Həll Yolu
 
-**Whitelist yanaşması** tətbiq edin: yalnız lazım olan uzantılara icazə verin, qalanları bloklayın.
+**Blacklist yanaşması** tətbiq edin: `allowUnlisted="true"` saxlayın (uzantısız URL-lər — REST API, SPA routing — işləməyə davam etsin), yalnız təhlükəli uzantıları açıq şəkildə bloklayın.
+
+> **Niyə blacklist?** IIS Request Filtering şeması boş `fileExtension=""` dəyərini (uzantısız URL-lər üçün) qəbul etmir — nə PowerShell, nə appcmd vasitəsilə allow qaydası əlavə etmək mümkündür. Whitelist (`allowUnlisted="false"`) yanaşması `/api/users`, `/apps`, `/dashboard` kimi bütün uzantısız URL-ləri bloklayır. Buna görə blacklist seçilmişdir.
 
 #### Metod 1: web.config vasitəsilə
 
@@ -955,85 +957,9 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
     <system.webServer>
         <security>
             <requestFiltering>
-                <!-- Siyahıda olmayanları bloklayın -->
-                <fileExtensions allowUnlisted="false">
-                    <!-- Yalnız lazım olan uzantılara icazə -->
-                    <clear />
-                    <add fileExtension=".aspx" allowed="true" />
-                    <add fileExtension=".asmx" allowed="true" />
-                    <add fileExtension=".svc" allowed="true" />
-                    <add fileExtension=".ashx" allowed="true" />
-                    <add fileExtension=".css" allowed="true" />
-                    <add fileExtension=".js" allowed="true" />
-                    <add fileExtension=".mjs" allowed="true" />
-                    <add fileExtension=".html" allowed="true" />
-                    <add fileExtension=".htm" allowed="true" />
-                    <add fileExtension=".png" allowed="true" />
-                    <add fileExtension=".jpg" allowed="true" />
-                    <add fileExtension=".gif" allowed="true" />
-                    <add fileExtension=".ico" allowed="true" />
-                    <add fileExtension=".woff" allowed="true" />
-                    <add fileExtension=".woff2" allowed="true" />
-                    <add fileExtension=".ttf" allowed="true" />
-                    <add fileExtension=".eot" allowed="true" />
-                    <add fileExtension=".bcmap" allowed="true" />
-                    <add fileExtension=".wasm" allowed="true" />
-                    <add fileExtension=".json" allowed="true" />
-                    <add fileExtension=".xml" allowed="true" />
-                    <!-- Images -->
-                    <add fileExtension=".jpeg" allowed="true" />
-                    <add fileExtension=".bmp" allowed="true" />
-                    <add fileExtension=".webp" allowed="true" />
-                    <add fileExtension=".tiff" allowed="true" />
-                    <add fileExtension=".tif" allowed="true" />
-                    <add fileExtension=".svg" allowed="true" />
-                    <add fileExtension=".heic" allowed="true" />
-                    <!-- PDF & Text -->
-                    <add fileExtension=".pdf" allowed="true" />
-                    <add fileExtension=".txt" allowed="true" />
-                    <add fileExtension=".csv" allowed="true" />
-                    <!-- Microsoft Office -->
-                    <add fileExtension=".doc" allowed="true" />
-                    <add fileExtension=".docx" allowed="true" />
-                    <add fileExtension=".xls" allowed="true" />
-                    <add fileExtension=".xlsx" allowed="true" />
-                    <add fileExtension=".ppt" allowed="true" />
-                    <add fileExtension=".pptx" allowed="true" />
-                    <add fileExtension=".odt" allowed="true" />
-                    <add fileExtension=".ods" allowed="true" />
-                    <add fileExtension=".odp" allowed="true" />
-                    <add fileExtension=".vsd" allowed="true" />
-                    <add fileExtension=".vsdx" allowed="true" />
-                    <add fileExtension=".mpp" allowed="true" />
-                    <add fileExtension=".pub" allowed="true" />
-                    <add fileExtension=".accdb" allowed="true" />
-                    <!-- Audio -->
-                    <add fileExtension=".mp3" allowed="true" />
-                    <add fileExtension=".wav" allowed="true" />
-                    <add fileExtension=".wma" allowed="true" />
-                    <add fileExtension=".aac" allowed="true" />
-                    <add fileExtension=".ogg" allowed="true" />
-                    <add fileExtension=".flac" allowed="true" />
-                    <add fileExtension=".m4a" allowed="true" />
-                    <add fileExtension=".aiff" allowed="true" />
-                    <add fileExtension=".amr" allowed="true" />
-                    <!-- Video -->
-                    <add fileExtension=".mp4" allowed="true" />
-                    <add fileExtension=".avi" allowed="true" />
-                    <add fileExtension=".mov" allowed="true" />
-                    <add fileExtension=".wmv" allowed="true" />
-                    <add fileExtension=".mkv" allowed="true" />
-                    <add fileExtension=".flv" allowed="true" />
-                    <add fileExtension=".webm" allowed="true" />
-                    <add fileExtension=".m4v" allowed="true" />
-                    <add fileExtension=".3gp" allowed="true" />
-                    <add fileExtension=".mpeg" allowed="true" />
-                    <add fileExtension=".mpg" allowed="true" />
-                    <!-- Archives & Logs -->
-                    <add fileExtension=".zip" allowed="true" />
-                    <add fileExtension=".rar" allowed="true" />
-                    <add fileExtension=".log" allowed="true" />
-                    <!-- Həmişə bloklanan uzantılar -->
+                <!-- allowUnlisted="true" — uzantısız URL-lərə icazə verir (API/SPA routing) -->
+                <fileExtensions allowUnlisted="true">
+                    <!-- Yalnız təhlükəli uzantılar açıq şəkildə bloklanır -->
                     <add fileExtension=".config" allowed="false" />
                     <add fileExtension=".cs" allowed="false" />
                     <add fileExtension=".vb" allowed="false" />
@@ -1041,6 +967,8 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
                     <add fileExtension=".old" allowed="false" />
                     <add fileExtension=".mdb" allowed="false" />
                     <add fileExtension=".mdf" allowed="false" />
+                    <add fileExtension=".exe" allowed="false" />
+                    <add fileExtension=".dll" allowed="false" />
                     <add fileExtension=".pdb" allowed="false" />
                 </fileExtensions>
             </requestFiltering>
@@ -1052,13 +980,20 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
 #### Metod 2: AppCmd.exe vasitəsilə
 
 ```cmd
-:: Siyahıda olmayanları bloklayın
-appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /fileExtensions.allowUnlisted:"False"
+:: allowUnlisted-i true saxlayın (defolt)
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /fileExtensions.allowUnlisted:"True"
 
-:: İcazə verilən uzantıları əlavə edin
-appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.aspx',allowed='True']"
-appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.svc',allowed='True']"
-appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.asmx',allowed='True']"
+:: Təhlükəli uzantıları bloklayın
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.config',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.cs',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.vb',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.bak',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.old',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.mdb',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.mdf',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.exe',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.dll',allowed='False']"
+appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFiltering /+"fileExtensions.[fileExtension='.pdb',allowed='False']"
 ```
 
 #### Metod 3: PowerShell vasitəsilə
@@ -1066,78 +1001,47 @@ appcmd.exe set config "TayqaSale" -section:system.webServer/security/requestFilt
 ```powershell
 Import-Module WebAdministration
 
-# allowUnlisted-i false edin (server səviyyəsi)
+# allowUnlisted-i true saxlayın — uzantısız URL-lər (API/SPA) işləməyə davam edir
 Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
     -filter "system.webServer/security/requestFiltering/fileExtensions" `
-    -name "allowUnlisted" -value "False"
+    -name "allowUnlisted" -value "True"
 
-# İcazə verilən uzantılar
-$allowedExtensions = @(
-    # Web
-    '.aspx', '.asmx', '.svc', '.ashx', '.css', '.js', '.mjs', '.html', '.htm',
-    '.woff', '.woff2', '.ttf', '.eot', '.json', '.xml', '.bcmap', '.wasm',
-    # Images
-    '.png', '.jpg', '.jpeg', '.bmp', '.gif', '.webp', '.tiff', '.tif', '.ico', '.svg', '.heic',
-    # PDF & Text
-    '.pdf', '.txt', '.csv',
-    # Microsoft Office
-    '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx',
-    '.odt', '.ods', '.odp', '.vsd', '.vsdx', '.mpp', '.pub', '.accdb',
-    # Audio
-    '.mp3', '.wav', '.wma', '.aac', '.ogg', '.flac', '.m4a', '.aiff', '.amr',
-    # Video
-    '.mp4', '.avi', '.mov', '.wmv', '.mkv', '.flv', '.webm', '.m4v', '.3gp', '.mpeg', '.mpg',
-    # Archives & Logs
-    '.zip', '.rar', '.log'
-)
-
-foreach ($ext in $allowedExtensions) {
-    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
-        -filter "system.webServer/security/requestFiltering/fileExtensions" -name "." `
-        -value @{fileExtension=$ext;allowed='true'}
-}
-
-# Bloklanan uzantılar
-$deniedExtensions = @('.config', '.cs', '.vb', '.bak', '.old', '.mdb', '.exe', '.dll', '.pdb')
+# Yalnız təhlükəli uzantıları bloklayın
+$deniedExtensions = @('.config', '.cs', '.vb', '.bak', '.old', '.mdb', '.mdf', '.exe', '.dll', '.pdb')
 
 foreach ($ext in $deniedExtensions) {
+    # Mövcud qaydanı sil (dublikat qarşısını almaq üçün)
+    try {
+        Remove-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
+            -filter "system.webServer/security/requestFiltering/fileExtensions" -name "." `
+            -AtElement @{fileExtension=$ext} -ErrorAction SilentlyContinue
+    } catch {}
+
     Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
         -filter "system.webServer/security/requestFiltering/fileExtensions" -name "." `
         -value @{fileExtension=$ext;allowed='false'}
+    
+    Write-Host "Bloklandı: $ext" -ForegroundColor Yellow
 }
+
+Write-Host "Blacklist tətbiq edildi. Uzantısız URL-lər (API/SPA) əlçatandır." -ForegroundColor Green
 ```
 
-> **Vacib:** Bu dəyişikliyi etmədən əvvəl bütün TayqaSale servislərinin istifadə etdiyi fayl uzantılarının siyahısını çıxarın. Yanlış uzantı bloklanması servisi yararsız edə bilər.
+> **Bloklanan uzantılar və səbəbləri:**
 
-> **Xəbərdarlıq — Uzantısız URL-lər:** `allowUnlisted="false"` aktiv edildikdə IIS uzantısız URL-ləri (`/apps`, `/api/users` və s.) bloklayır. IIS Request Filtering boş `fileExtension=""` dəyərini şema səviyyəsində qəbul etmir (nə PowerShell, nə appcmd vasitəsilə). Bu problem üçün **URL Rewrite** qaydası lazımdır:
-
-```xml
-<!-- Her saytın web.config-inə əlavə edin — allowUnlisted="false" ilə birlikdə -->
-<system.webServer>
-    <rewrite>
-        <rules>
-            <rule name="Extensionless URLs - SPA and API routing" stopProcessing="true">
-                <!-- Nöqtəsiz (uzantısız) URL-lər üçün -->
-                <match url="^[^.]*$" />
-                <conditions>
-                    <!-- Fiziki fayl və ya qovluq deyilsə -->
-                    <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-                    <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
-                </conditions>
-                <!-- Kök URL-ə yönləndir (SPA entry point) -->
-                <action type="Rewrite" url="/" />
-            </rule>
-        </rules>
-    </rewrite>
-</system.webServer>
-```
-
-> **Qeyd:** URL Rewrite modulu quraşdırılmamışdırsa: `Install-WindowsFeature Web-Url-Rewrite` və ya IIS Manager → Modules yoxlayın.
+| Uzantı | Səbəb |
+|---|---|
+| `.config` | Web.config, app.config — bağlantı sətirləri, şifrələr |
+| `.cs` / `.vb` | Source code faylları |
+| `.bak` / `.old` | Köhnə backup faylları |
+| `.mdb` / `.mdf` | Access/SQL Server verilənlər bazası faylları |
+| `.exe` / `.dll` | İcra olunan fayllar |
+| `.pdb` | Debug simvol faylları |
 
 ### Test proseduru
 
 ```powershell
-# Əvvəlcə mövcud fayl uzantılarını analiz edin
+# Mövcud fayl uzantılarını analiz edin
 Get-ChildItem -Path "C:\TayqaSale\WebServices" -Recurse -File | 
     Group-Object Extension | 
     Sort-Object Count -Descending | 
@@ -1148,9 +1052,24 @@ Get-ChildItem -Path "C:\TayqaSale\WebServices" -Recurse -File |
 ### Yoxlama
 
 ```powershell
-(Get-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
+# Bütün deny qaydalarının mövcudluğunu yoxlayın
+$deniedExtensions = @('.config', '.cs', '.vb', '.bak', '.old', '.mdb', '.mdf', '.exe', '.dll', '.pdb')
+$rules = Get-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
+    -filter "system.webServer/security/requestFiltering/fileExtensions" -name "."
+
+foreach ($ext in $deniedExtensions) {
+    $rule = $rules | Where-Object { $_.fileExtension -eq $ext -and $_.allowed -eq $false }
+    if ($rule) {
+        Write-Host "COMPLIANT: $ext bloklanıb" -ForegroundColor Green
+    } else {
+        Write-Host "NON-COMPLIANT: $ext üçün deny qaydası yoxdur" -ForegroundColor Red
+    }
+}
+
+# allowUnlisted dəyərini yoxlayın (true olmalıdır — uzantısız URL-lər üçün)
+$allowUnlisted = (Get-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
     -filter "system.webServer/security/requestFiltering/fileExtensions" -name "allowUnlisted").Value
-# Nəticə: False olmalıdır
+Write-Host "allowUnlisted: $allowUnlisted (uzantısız URL-lər üçün true olmalıdır)" -ForegroundColor Cyan
 ```
 
 ---
@@ -1321,10 +1240,12 @@ $poolNames = (Get-Website).applicationPool
 $duplicates = $poolNames | Group-Object | Where-Object { $_.Count -gt 1 }
 if ($duplicates) { Write-Host " NON-COMPLIANT (paylaşılan pool-lar var)" -ForegroundColor Red } else { Write-Host " COMPLIANT" -ForegroundColor Green }
 
-# 11. Unlisted File Extensions
-Write-Host "11. Unlisted Extensions Blocked:" -NoNewline
-$unlisted = (Get-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter "system.webServer/security/requestFiltering/fileExtensions" -name "allowUnlisted").Value
-if (-not $unlisted) { Write-Host " COMPLIANT" -ForegroundColor Green } else { Write-Host " NON-COMPLIANT" -ForegroundColor Red }
+# 11. Unlisted File Extensions (blacklist — deny rules mövcudluğu yoxlanılır)
+Write-Host "11. Dangerous Extensions Blacklisted:" -NoNewline
+$deniedExts = @('.config', '.cs', '.vb', '.bak', '.old', '.mdb', '.mdf', '.exe', '.dll', '.pdb')
+$rules = Get-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter "system.webServer/security/requestFiltering/fileExtensions" -name "."
+$missing = $deniedExts | Where-Object { $ext = $_; -not ($rules | Where-Object { $_.fileExtension -eq $ext -and $_.allowed -eq $false }) }
+if ($missing) { Write-Host " NON-COMPLIANT (eksik: $($missing -join ', '))" -ForegroundColor Red } else { Write-Host " COMPLIANT" -ForegroundColor Green }
 
 # 12. Web Content Partition
 Write-Host "12. Non-System Partition:" -NoNewline

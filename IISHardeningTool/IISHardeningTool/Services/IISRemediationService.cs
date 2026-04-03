@@ -742,15 +742,23 @@ public class IISRemediationService
             var config = mgr.GetApplicationHostConfiguration();
             var section = config.GetSection("system.webServer/security/requestFiltering");
             var fileExtensions = section.GetChildElement("fileExtensions");
-            var allowUnlisted = (bool)fileExtensions["allowUnlisted"];
+            var collection = fileExtensions.GetCollection();
 
-            if (!allowUnlisted)
+            // Compliant = all dangerous extensions are explicitly denied
+            var deniedExts = new[] { ".config", ".cs", ".vb", ".bak", ".old", ".mdb", ".mdf", ".exe", ".dll", ".pdb" };
+            var missingDenies = deniedExts
+                .Where(ext => !collection.Any(e =>
+                    string.Equals((string)e["fileExtension"], ext, StringComparison.OrdinalIgnoreCase) &&
+                    !(bool)e["allowed"]))
+                .ToList();
+
+            if (missingDenies.Count == 0)
             {
-                message = "Unlisted file extensions are blocked.";
+                message = $"Dangerous extensions are explicitly denied ({deniedExts.Length} rules). Extensionless URLs remain accessible.";
                 return ComplianceStatus.Compliant;
             }
 
-            message = "Unlisted file extensions are currently allowed.";
+            message = $"Missing deny rules for: {string.Join(", ", missingDenies)}";
             return ComplianceStatus.NonCompliant;
         }
         catch (Exception ex)
@@ -769,61 +777,46 @@ public class IISRemediationService
             var section = config.GetSection("system.webServer/security/requestFiltering");
             var fileExtensions = section.GetChildElement("fileExtensions");
 
-            fileExtensions["allowUnlisted"] = false;
+            // Keep allowUnlisted=true so extensionless URLs (/api/users, /apps, etc.) keep working.
+            // IIS doesn't accept empty-string fileExtension, so whitelist approach breaks extensionless routes.
+            // Solution: blacklist only the dangerous extensions explicitly.
+            fileExtensions["allowUnlisted"] = true;
 
             var collection = fileExtensions.GetCollection();
-
-            // Allowed extensions (per CIS IIS 10 Benchmark — Section 7.7 / TayqaSale whitelist)
-            var allowedExts = new[] {
-                // Web
-                ".aspx", ".asmx", ".svc", ".ashx", ".css", ".js", ".mjs", ".html", ".htm",
-                ".woff", ".woff2", ".ttf", ".eot", ".json", ".xml", ".bcmap", ".wasm",
-                // Images
-                ".png", ".jpg", ".jpeg", ".bmp", ".gif", ".webp", ".tiff", ".tif",
-                ".ico", ".svg", ".heic",
-                // PDF & Text
-                ".pdf", ".txt", ".csv",
-                // Microsoft Office
-                ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx",
-                ".odt", ".ods", ".odp", ".vsd", ".vsdx", ".mpp", ".pub", ".accdb",
-                // Audio
-                ".mp3", ".wav", ".wma", ".aac", ".ogg", ".flac", ".m4a", ".aiff", ".amr",
-                // Video
-                ".mp4", ".avi", ".mov", ".wmv", ".mkv", ".flv", ".webm",
-                ".m4v", ".3gp", ".mpeg", ".mpg",
-                // Archives & Logs
-                ".zip", ".rar", ".log"
-            };
 
             // Denied extensions (always blocked)
             var deniedExts = new[] {
                 ".config", ".cs", ".vb", ".bak", ".old", ".mdb", ".mdf", ".exe", ".dll", ".pdb"
             };
 
-            foreach (var ext in allowedExts)
-            {
-                if (!collection.Any(e => string.Equals((string)e["fileExtension"], ext, StringComparison.OrdinalIgnoreCase)))
-                {
-                    var element = collection.CreateElement("add");
-                    element["fileExtension"] = ext;
-                    element["allowed"] = true;
-                    collection.Add(element);
-                }
-            }
-
+            var added = new List<string>();
             foreach (var ext in deniedExts)
             {
-                if (!collection.Any(e => string.Equals((string)e["fileExtension"], ext, StringComparison.OrdinalIgnoreCase)))
+                bool alreadyDenied = collection.Any(e =>
+                    string.Equals((string)e["fileExtension"], ext, StringComparison.OrdinalIgnoreCase) &&
+                    !(bool)e["allowed"]);
+
+                if (!alreadyDenied)
                 {
+                    // Remove any existing allow rule for this ext first
+                    var existing = collection.FirstOrDefault(e =>
+                        string.Equals((string)e["fileExtension"], ext, StringComparison.OrdinalIgnoreCase));
+                    if (existing != null)
+                        collection.Remove(existing);
+
                     var element = collection.CreateElement("add");
                     element["fileExtension"] = ext;
                     element["allowed"] = false;
                     collection.Add(element);
+                    added.Add(ext);
+                    Log($"  Denied extension: {ext}");
                 }
             }
 
             mgr.CommitChanges();
-            message = $"Unlisted extensions blocked. Allowed: {allowedExts.Length}, Denied: {deniedExts.Length}";
+            message = added.Count > 0
+                ? $"Blacklist applied. Denied {deniedExts.Length} extensions. Extensionless URLs are allowed."
+                : $"All {deniedExts.Length} deny rules already present.";
             return ComplianceStatus.Fixed;
         }
         catch (Exception ex)
@@ -850,7 +843,7 @@ public class IISRemediationService
             new() { Id = 8, Title = "HttpCookie Mode (Session)", Category = "Session Hijacking", RiskLevel = "High", CisBenchmark = "CIS IIS 10 — Section 7.9", Description = "Set session state to use cookies only", IsSelected = true },
             new() { Id = 9, Title = "Non-ASCII Characters in URLs", Category = "Brute Force", RiskLevel = "Medium", CisBenchmark = "CIS IIS 10 — Section 7.12", Description = "Block high-bit characters in URLs", IsSelected = true },
             new() { Id = 10, Title = "Unique Application Pools", Category = "Permission Management", RiskLevel = "High", CisBenchmark = "CIS IIS 10 — Section 3.4", Description = "Ensure each site has a unique application pool", IsSelected = true },
-            new() { Id = 11, Title = "Unlisted File Extensions", Category = "Permission Management", RiskLevel = "High", CisBenchmark = "CIS IIS 10 — Section 7.7", Description = "Block unlisted file extensions (whitelist approach)", IsSelected = true },
+            new() { Id = 11, Title = "Unlisted File Extensions", Category = "Permission Management", RiskLevel = "High", CisBenchmark = "CIS IIS 10 — Section 7.7", Description = "Blacklist dangerous extensions — extensionless URLs remain accessible", IsSelected = true },
         };
     }
 
