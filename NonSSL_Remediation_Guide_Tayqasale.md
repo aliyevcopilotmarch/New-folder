@@ -702,40 +702,46 @@ Session ID-ni **yalnız cookie** vasitəsilə daşıyın (`UseCookies` mode).
 </configuration>
 ```
 
-#### Metod 3: PowerShell vasitəsilə
+#### Metod 3: PowerShell vasitəsilə — machine.config (Global, tövsiyə olunan)
+
+Bütün servislərə tək bir dəyişikliklə tətbiq etmək üçün `machine.config` faylını yeniləyin:
 
 ```powershell
-# Hər TayqaSale servisinin web.config faylını yeniləyin
-$webConfigPaths = @(
-    "C:\TayqaSale\WebServices\LicenseService\web.config",
-    "C:\TayqaSale\WebServices\ServicePortal\WebUI\web.config",
-    "C:\TayqaSale\WebServices\CampaignManagementPortal\WebUI\web.config"
-)
+$machineConfigPath = "$env:windir\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config"
 
-foreach ($configPath in $webConfigPaths) {
-    if (Test-Path $configPath) {
-        [xml]$xml = Get-Content $configPath
-        
-        $systemWeb = $xml.configuration.'system.web'
-        if (-not $systemWeb) {
-            $systemWeb = $xml.CreateElement('system.web')
-            $xml.configuration.AppendChild($systemWeb) | Out-Null
-        }
-        
-        $sessionState = $systemWeb.SelectSingleNode('sessionState')
-        if (-not $sessionState) {
-            $sessionState = $xml.CreateElement('sessionState')
-            $systemWeb.AppendChild($sessionState) | Out-Null
-        }
-        
-        $sessionState.SetAttribute('cookieless', 'UseCookies')
-        $sessionState.SetAttribute('regenerateExpiredSessionId', 'true')
-        
-        $xml.Save($configPath)
-        Write-Host "sessionState cookieless=UseCookies tətbiq edildi: $configPath" -ForegroundColor Green
-    }
+# Backup yaradın
+Copy-Item $machineConfigPath "$machineConfigPath.backup.$(Get-Date -Format 'yyyyMMdd_HHmmss')"
+
+[xml]$xml = Get-Content $machineConfigPath
+
+$systemWeb = $xml.configuration.'system.web'
+if (-not $systemWeb) {
+    $systemWeb = $xml.CreateElement('system.web')
+    $xml.configuration.AppendChild($systemWeb) | Out-Null
+}
+
+$sessionState = $systemWeb.SelectSingleNode('sessionState')
+if (-not $sessionState) {
+    $sessionState = $xml.CreateElement('sessionState')
+    $systemWeb.AppendChild($sessionState) | Out-Null
+}
+
+$sessionState.SetAttribute('cookieless', 'UseCookies')
+$sessionState.SetAttribute('regenerateExpiredSessionId', 'true')
+$xml.Save($machineConfigPath)
+Write-Host "machine.config-da sessionState tətbiq edildi — bütün servislərə aiddir." -ForegroundColor Green
+
+# Yoxlama
+$check = [xml](Get-Content $machineConfigPath)
+$val = $check.configuration.'system.web'.sessionState.cookieless
+if ($val -eq 'UseCookies') {
+    Write-Host "COMPLIANT: sessionState cookieless=UseCookies" -ForegroundColor Green
+} else {
+    Write-Host "NON-COMPLIANT: cookieless=$val" -ForegroundColor Red
 }
 ```
+
+> **Üstünlük:** `machine.config`-ə yazıldığında serverdəki **bütün** ASP.NET tətbiqlərinə avtomatik tətbiq olunur. Gələcəkdə əlavə olunan yeni servislər üçün ayrıca konfiqurasiya tələb olunmur.
 
 #### `cookieless` parametrinin mümkün dəyərləri
 
@@ -895,37 +901,7 @@ appcmd.exe set apppool "TayqaSaleLicensePool" /processModel.identityType:Applica
 appcmd.exe set apppool "TayqaSaleMasterDataPool" /processModel.identityType:ApplicationPoolIdentity
 ```
 
-#### Metod 3: PowerShell vasitəsilə
-
-```powershell
-Import-Module WebAdministration
-
-$services = @{
-    "TayqaSaleServicePortalPool" = "TayqaSaleServicePortal"
-    "TayqaSaleDTMPool"           = "TayqaSaleDTM"
-    "TayqaSaleCampaignPool"      = "TayqaSaleCampaign"
-    "TayqaSaleLicensePool"       = "TayqaSaleLicense"
-    "TayqaSaleMasterDataPool"    = "TayqaSaleMasterData"
-}
-
-foreach ($pool in $services.Keys) {
-    # Application pool yaradın (əgər yoxdursa)
-    if (-not (Test-Path "IIS:\AppPools\$pool")) {
-        New-WebAppPool -Name $pool
-        Set-ItemProperty "IIS:\AppPools\$pool" -Name managedRuntimeVersion -Value "v4.0"
-        Set-ItemProperty "IIS:\AppPools\$pool" -Name managedPipelineMode -Value 1  # Integrated
-        Set-ItemProperty "IIS:\AppPools\$pool" -Name processModel.identityType -Value 4  # ApplicationPoolIdentity
-        Write-Host "Application pool yaradıldı: $pool" -ForegroundColor Green
-    }
-    
-    # Saytı pool-a təyin edin
-    $siteName = $services[$pool]
-    if (Test-Path "IIS:\Sites\$siteName") {
-        Set-ItemProperty "IIS:\Sites\$siteName" -Name applicationPool -Value $pool
-        Write-Host "Sayt $siteName -> $pool təyin edildi" -ForegroundColor Green
-    }
-}
-```
+#### Metod 3: PowerShell vasitəsilə (Avtomatik — bütün saytlar üçün)
 
 ### Yoxlama
 
@@ -989,6 +965,7 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
                     <add fileExtension=".ashx" allowed="true" />
                     <add fileExtension=".css" allowed="true" />
                     <add fileExtension=".js" allowed="true" />
+                    <add fileExtension=".mjs" allowed="true" />
                     <add fileExtension=".html" allowed="true" />
                     <add fileExtension=".htm" allowed="true" />
                     <add fileExtension=".png" allowed="true" />
@@ -998,8 +975,64 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
                     <add fileExtension=".woff" allowed="true" />
                     <add fileExtension=".woff2" allowed="true" />
                     <add fileExtension=".ttf" allowed="true" />
+                    <add fileExtension=".eot" allowed="true" />
+                    <add fileExtension=".bcmap" allowed="true" />
+                    <add fileExtension=".wasm" allowed="true" />
                     <add fileExtension=".json" allowed="true" />
                     <add fileExtension=".xml" allowed="true" />
+                    <!-- Images -->
+                    <add fileExtension=".jpeg" allowed="true" />
+                    <add fileExtension=".bmp" allowed="true" />
+                    <add fileExtension=".webp" allowed="true" />
+                    <add fileExtension=".tiff" allowed="true" />
+                    <add fileExtension=".tif" allowed="true" />
+                    <add fileExtension=".svg" allowed="true" />
+                    <add fileExtension=".heic" allowed="true" />
+                    <!-- PDF & Text -->
+                    <add fileExtension=".pdf" allowed="true" />
+                    <add fileExtension=".txt" allowed="true" />
+                    <add fileExtension=".csv" allowed="true" />
+                    <!-- Microsoft Office -->
+                    <add fileExtension=".doc" allowed="true" />
+                    <add fileExtension=".docx" allowed="true" />
+                    <add fileExtension=".xls" allowed="true" />
+                    <add fileExtension=".xlsx" allowed="true" />
+                    <add fileExtension=".ppt" allowed="true" />
+                    <add fileExtension=".pptx" allowed="true" />
+                    <add fileExtension=".odt" allowed="true" />
+                    <add fileExtension=".ods" allowed="true" />
+                    <add fileExtension=".odp" allowed="true" />
+                    <add fileExtension=".vsd" allowed="true" />
+                    <add fileExtension=".vsdx" allowed="true" />
+                    <add fileExtension=".mpp" allowed="true" />
+                    <add fileExtension=".pub" allowed="true" />
+                    <add fileExtension=".accdb" allowed="true" />
+                    <!-- Audio -->
+                    <add fileExtension=".mp3" allowed="true" />
+                    <add fileExtension=".wav" allowed="true" />
+                    <add fileExtension=".wma" allowed="true" />
+                    <add fileExtension=".aac" allowed="true" />
+                    <add fileExtension=".ogg" allowed="true" />
+                    <add fileExtension=".flac" allowed="true" />
+                    <add fileExtension=".m4a" allowed="true" />
+                    <add fileExtension=".aiff" allowed="true" />
+                    <add fileExtension=".amr" allowed="true" />
+                    <!-- Video -->
+                    <add fileExtension=".mp4" allowed="true" />
+                    <add fileExtension=".avi" allowed="true" />
+                    <add fileExtension=".mov" allowed="true" />
+                    <add fileExtension=".wmv" allowed="true" />
+                    <add fileExtension=".mkv" allowed="true" />
+                    <add fileExtension=".flv" allowed="true" />
+                    <add fileExtension=".webm" allowed="true" />
+                    <add fileExtension=".m4v" allowed="true" />
+                    <add fileExtension=".3gp" allowed="true" />
+                    <add fileExtension=".mpeg" allowed="true" />
+                    <add fileExtension=".mpg" allowed="true" />
+                    <!-- Archives & Logs -->
+                    <add fileExtension=".zip" allowed="true" />
+                    <add fileExtension=".rar" allowed="true" />
+                    <add fileExtension=".log" allowed="true" />
                     <!-- Həmişə bloklanan uzantılar -->
                     <add fileExtension=".config" allowed="false" />
                     <add fileExtension=".cs" allowed="false" />
@@ -1008,6 +1041,7 @@ if ($poolUsage.Values | Where-Object { $_ -like '*,*' }) {
                     <add fileExtension=".old" allowed="false" />
                     <add fileExtension=".mdb" allowed="false" />
                     <add fileExtension=".mdf" allowed="false" />
+                    <add fileExtension=".pdb" allowed="false" />
                 </fileExtensions>
             </requestFiltering>
         </security>
@@ -1038,7 +1072,24 @@ Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
     -name "allowUnlisted" -value "False"
 
 # İcazə verilən uzantılar
-$allowedExtensions = @('.aspx', '.asmx', '.svc', '.ashx', '.css', '.js', '.html', '.htm', '.png', '.jpg', '.gif', '.ico', '.woff', '.woff2', '.json')
+$allowedExtensions = @(
+    # Web
+    '.aspx', '.asmx', '.svc', '.ashx', '.css', '.js', '.mjs', '.html', '.htm',
+    '.woff', '.woff2', '.ttf', '.eot', '.json', '.xml', '.bcmap', '.wasm',
+    # Images
+    '.png', '.jpg', '.jpeg', '.bmp', '.gif', '.webp', '.tiff', '.tif', '.ico', '.svg', '.heic',
+    # PDF & Text
+    '.pdf', '.txt', '.csv',
+    # Microsoft Office
+    '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx',
+    '.odt', '.ods', '.odp', '.vsd', '.vsdx', '.mpp', '.pub', '.accdb',
+    # Audio
+    '.mp3', '.wav', '.wma', '.aac', '.ogg', '.flac', '.m4a', '.aiff', '.amr',
+    # Video
+    '.mp4', '.avi', '.mov', '.wmv', '.mkv', '.flv', '.webm', '.m4v', '.3gp', '.mpeg', '.mpg',
+    # Archives & Logs
+    '.zip', '.rar', '.log'
+)
 
 foreach ($ext in $allowedExtensions) {
     Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
@@ -1047,7 +1098,7 @@ foreach ($ext in $allowedExtensions) {
 }
 
 # Bloklanan uzantılar
-$deniedExtensions = @('.config', '.cs', '.vb', '.bak', '.old', '.mdb', '.exe', '.dll')
+$deniedExtensions = @('.config', '.cs', '.vb', '.bak', '.old', '.mdb', '.exe', '.dll', '.pdb')
 
 foreach ($ext in $deniedExtensions) {
     Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' `
@@ -1057,6 +1108,31 @@ foreach ($ext in $deniedExtensions) {
 ```
 
 > **Vacib:** Bu dəyişikliyi etmədən əvvəl bütün TayqaSale servislərinin istifadə etdiyi fayl uzantılarının siyahısını çıxarın. Yanlış uzantı bloklanması servisi yararsız edə bilər.
+
+> **Xəbərdarlıq — Uzantısız URL-lər:** `allowUnlisted="false"` aktiv edildikdə IIS uzantısız URL-ləri (`/apps`, `/api/users` və s.) bloklayır. IIS Request Filtering boş `fileExtension=""` dəyərini şema səviyyəsində qəbul etmir (nə PowerShell, nə appcmd vasitəsilə). Bu problem üçün **URL Rewrite** qaydası lazımdır:
+
+```xml
+<!-- Her saytın web.config-inə əlavə edin — allowUnlisted="false" ilə birlikdə -->
+<system.webServer>
+    <rewrite>
+        <rules>
+            <rule name="Extensionless URLs - SPA and API routing" stopProcessing="true">
+                <!-- Nöqtəsiz (uzantısız) URL-lər üçün -->
+                <match url="^[^.]*$" />
+                <conditions>
+                    <!-- Fiziki fayl və ya qovluq deyilsə -->
+                    <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                    <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                </conditions>
+                <!-- Kök URL-ə yönləndir (SPA entry point) -->
+                <action type="Rewrite" url="/" />
+            </rule>
+        </rules>
+    </rewrite>
+</system.webServer>
+```
+
+> **Qeyd:** URL Rewrite modulu quraşdırılmamışdırsa: `Install-WindowsFeature Web-Url-Rewrite` və ya IIS Manager → Modules yoxlayın.
 
 ### Test proseduru
 
