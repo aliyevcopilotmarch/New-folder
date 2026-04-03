@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute(("Automated IIS security misconfiguration remediation tool for TayqaSale web servic" +
     "es"))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1d4ca3738a14f6b93c3bc1a00c5a76c96731e73")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc741cb2072abb1eb1bd9eae2ca667d3771bbad4")]
 [assembly: System.Reflection.AssemblyProductAttribute("IISHardeningTool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IISHardeningTool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
