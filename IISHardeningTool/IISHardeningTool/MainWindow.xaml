@@ -54,6 +54,9 @@
             <Button x:Name="BtnScanAll" Content="🔍 Scan All" 
                     Background="#89B4FA" Click="BtnScanAll_Click"
                     Style="{StaticResource ActionButton}" Margin="0,0,10,0"/>
+            <Button x:Name="BtnScanSelected" Content="🔎 Scan Selected" 
+                    Background="#74C7EC" Click="BtnScanSelected_Click"
+                    Style="{StaticResource ActionButton}" Margin="0,0,10,0"/>
             <Button x:Name="BtnFixSelected" Content="🔧 Fix Selected" 
                     Background="#A6E3A1" Click="BtnFixSelected_Click"
                     Style="{StaticResource ActionButton}" Margin="0,0,10,0"/>
@@ -65,6 +68,9 @@
                     Style="{StaticResource ActionButton}" Margin="0,0,10,0"/>
             <Button x:Name="BtnExportReport" Content="📄 Export Report" 
                     Background="#CBA6F7" Click="BtnExportReport_Click"
+                    Style="{StaticResource ActionButton}" Margin="0,0,10,0"/>
+            <Button x:Name="BtnClearLogs" Content="🗑 Clear Logs" 
+                    Background="#F38BA8" Click="BtnClearLogs_Click"
                     Style="{StaticResource ActionButton}"/>
         </StackPanel>
 

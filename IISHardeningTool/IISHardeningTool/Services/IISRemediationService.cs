@@ -773,15 +773,31 @@ public class IISRemediationService
 
             var collection = fileExtensions.GetCollection();
 
-            // Allowed extensions
+            // Allowed extensions (per CIS IIS 10 Benchmark — Section 7.7 / TayqaSale whitelist)
             var allowedExts = new[] {
-                ".aspx", ".asmx", ".svc", ".ashx", ".css", ".js", ".html", ".htm",
-                ".png", ".jpg", ".gif", ".ico", ".woff", ".woff2", ".ttf", ".json", ".xml"
+                // Web
+                ".aspx", ".asmx", ".svc", ".ashx", ".css", ".js", ".mjs", ".html", ".htm",
+                ".woff", ".woff2", ".ttf", ".eot", ".json", ".xml", ".bcmap", ".wasm",
+                // Images
+                ".png", ".jpg", ".jpeg", ".bmp", ".gif", ".webp", ".tiff", ".tif",
+                ".ico", ".svg", ".heic",
+                // PDF & Text
+                ".pdf", ".txt", ".csv",
+                // Microsoft Office
+                ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx",
+                ".odt", ".ods", ".odp", ".vsd", ".vsdx", ".mpp", ".pub", ".accdb",
+                // Audio
+                ".mp3", ".wav", ".wma", ".aac", ".ogg", ".flac", ".m4a", ".aiff", ".amr",
+                // Video
+                ".mp4", ".avi", ".mov", ".wmv", ".mkv", ".flv", ".webm",
+                ".m4v", ".3gp", ".mpeg", ".mpg",
+                // Archives & Logs
+                ".zip", ".rar", ".log"
             };
 
-            // Denied extensions
+            // Denied extensions (always blocked)
             var deniedExts = new[] {
-                ".config", ".cs", ".vb", ".bak", ".old", ".mdb", ".mdf", ".exe", ".dll"
+                ".config", ".cs", ".vb", ".bak", ".old", ".mdb", ".mdf", ".exe", ".dll", ".pdb"
             };
 
             foreach (var ext in allowedExts)

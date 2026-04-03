@@ -77,6 +77,54 @@ public partial class MainWindow : Window
         SetButtonsEnabled(true);
     }
 
+    private async void BtnScanSelected_Click(object sender, RoutedEventArgs e)
+    {
+        var selectedItems = _items.Where(i => i.IsSelected).ToList();
+        if (selectedItems.Count == 0)
+        {
+            MessageBox.Show("No items selected. Please check the items you want to scan.",
+                "No Selection", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
+
+        SetButtonsEnabled(false);
+        LogMessage($"═══ Scanning {selectedItems.Count} selected item(s)... ═══");
+
+        await Task.Run(() =>
+        {
+            foreach (var item in selectedItems)
+            {
+                try
+                {
+                    LogMessage($"Checking #{item.Id}: {item.Title}...");
+                    var (status, message) = _service.CheckItem(item.Id);
+                    Dispatcher.Invoke(() =>
+                    {
+                        item.Status = status;
+                        item.StatusMessage = message;
+                    });
+                    LogMessage($"  → {status}: {message}");
+                }
+                catch (Exception ex)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        item.Status = ComplianceStatus.Error;
+                        item.StatusMessage = ex.Message;
+                    });
+                    LogMessage($"  → Error: {ex.Message}");
+                }
+            }
+        });
+
+        DgItems.Items.Refresh();
+        var compliant = selectedItems.Count(i => i.Status == ComplianceStatus.Compliant);
+        var nonCompliant = selectedItems.Count(i => i.Status == ComplianceStatus.NonCompliant);
+        var errors = selectedItems.Count(i => i.Status == ComplianceStatus.Error);
+        LogMessage($"═══ Scan complete: {compliant} compliant, {nonCompliant} non-compliant, {errors} errors ═══");
+        SetButtonsEnabled(true);
+    }
+
     private async void BtnFixSelected_Click(object sender, RoutedEventArgs e)
     {
         var selectedItems = _items.Where(i => i.IsSelected).ToList();
@@ -165,6 +213,12 @@ public partial class MainWindow : Window
         LogMessage($"═══ Fix complete: {fixedCount} fixed, {errorCount} errors ═══");
     }
 
+    private void BtnClearLogs_Click(object sender, RoutedEventArgs e)
+    {
+        TxtLog.Clear();
+        LogMessage("Log cleared.");
+    }
+
     private void BtnSelectAll_Click(object sender, RoutedEventArgs e)
     {
         bool allSelected = _items.All(i => i.IsSelected);
@@ -223,6 +277,7 @@ public partial class MainWindow : Window
         Dispatcher.Invoke(() =>
         {
             BtnScanAll.IsEnabled = enabled;
+            BtnScanSelected.IsEnabled = enabled;
             BtnFixSelected.IsEnabled = enabled;
             BtnFixAll.IsEnabled = enabled;
             BtnExportReport.IsEnabled = enabled;
