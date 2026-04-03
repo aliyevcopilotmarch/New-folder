@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace>IISHardeningTool</RootNamespace>
+    <AssemblyName>IISHardeningTool</AssemblyName>
+    <Title>TayqaSale IIS Hardening Tool</Title>
+    <Description>Automated IIS security misconfiguration remediation tool for TayqaSale web services</Description>
+    <Company>Avrora Security</Company>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
+  </ItemGroup>
+
+</Project>
